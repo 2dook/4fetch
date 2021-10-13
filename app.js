@@ -5,14 +5,10 @@ const board = process.argv[1];
 const threadnumber = process.argv[2];
 const path = process.argv[3];
 
-function validateInput(board, threadnumber, path) {
-    if((board != null && board != undefined) && (threadnumber != NaN && threadnumber != undefined)) {
-
-    } else {
-        console.log("Correct usage: node app.js [board] [threadnumber] [OPTIONAL: path]");
-        process.exit(-1);
-    }
-}
+if(!((board != null && board != undefined) && (threadnumber != NaN && threadnumber != undefined))) {
+      console.log("Correct usage: node app.js [board] [threadnumber] [OPTIONAL: path]");
+      process.exit(-1);
+  }
 
 async function getPageData(board, threadnumber, path) {
     if(process.argv[3] != undefined)
@@ -38,6 +34,4 @@ async function getPageData(board, threadnumber, path) {
     console.log("Done!")
 }
 
-
-validateInput();
 getPageData(process.argv[1], process.argv[2], process.argv[3]);
